@@ -32,22 +32,23 @@ python eeg_analyzer.py [options] file1.edf file2.edf ...
 
 ## Example Commands
 
+### Occipital alpha rhythm (eyes open vs closed)
+```bash
+python eeg_analyzer.py --channels O1.. Oz.. O2.. Pz.. \
+--epochs T0 --band alpha --show_bar \
+data/S001/S001R01.edf data/S001/S001R02.edf
+```
+
 ### Motor cortex during hand movements
 ```bash
 python eeg_analyzer.py --channels C3.. C4.. --epochs T1 T2 --band 8 13 --show_bar \
-  S001/S001R03.edf S001/S001R04.edf
+data/S001/S001R03.edf data/S001/S001R04.edf
 ```
 
-### Occipital alpha rhythm (eyes closed)
+### Custom filtering on higher band
 ```bash
-python eeg_analyzer.py --channels O1.. Oz.. O2.. --epochs T0 --band alpha \
-  S001/S001R02.edf
-```
-
-### Custom frequency band
-```bash
-python eeg_analyzer.py --channels C3.. --epochs T1 --band 12.5 16 \
-  S001/S001R03.edf
+python eeg_analyzer.py --channels C3.. C4.. Cz.. --epochs T1 --band gamma --lowcut 30 \
+--highcut 45 --show_bar data/S001/S001R03.edf
 ```
 
 ## Sample Output Plots
@@ -73,7 +74,7 @@ Additional figures are available in the `output_plots` directory, named using th
 ## Dataset Structure
 
 Description of motor movement/imagery dataset from source: https://physionet.org/content/eegmmidb/1.0.0/
-```
+
 Experimental Protocol
 Subjects performed different motor/imagery tasks while 64-channel EEG were recorded using the BCI2000 system (http://www.bci2000.org). Each subject performed 14 experimental runs: two one-minute baseline runs (one with eyes open, one with eyes closed), and three two-minute runs of each of the four following tasks:
 
@@ -81,7 +82,7 @@ Subjects performed different motor/imagery tasks while 64-channel EEG were recor
   - A target appears on either the left or the right side of the screen. The subject imagines opening and closing the corresponding fist until the target disappears. Then the subject relaxes.
   - A target appears on either the top or the bottom of the screen. The subject opens and closes either both fists (if the target is on top) or both feet (if the target is on the bottom) until the target disappears. Then the subject relaxes.
   - A target appears on either the top or the bottom of the screen. The subject imagines opening and closing either both fists (if the target is on top) or both feet (if the target is on the bottom) until the target disappears. Then the subject relaxes.
-```
+
 
 In summary, the experimental runs for each subject are as follows:
 

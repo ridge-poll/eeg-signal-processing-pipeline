@@ -202,7 +202,7 @@ def main():
         help="Event IDs to include (e.g. --epochs T0 T2 T3); default includes all")
     parser.add_argument("--band", nargs="+", default=["alpha"],
         help="Frequency band: name (alpha, beta, etc.) or two numbers (e.g. --band 12.5 16)")
-    parser.add_argument("--show_bar", action="store_true",
+    parser.add_argument("--show_bar", action="store_true", default=False,
         help="Show bar plot comparing band power across signals")
     parser.add_argument("--save_fig", type=str, default="",
                         help="Enter name for saved file (e.g. --save_fig image.png)")

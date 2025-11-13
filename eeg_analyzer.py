@@ -345,7 +345,7 @@ def main():
                        help="Event IDs to include (e.g., T0 T2 T3); default: all")
     parser.add_argument("--band", nargs="+", default=["alpha"],
                        help="Frequency band: name (alpha, beta, etc.) or two numbers")
-    parser.add_argument("--show_bar", action="store_true",
+    parser.add_argument("--show_bar", action="store_true", default=False,
                        help="Show bar plot comparing band power across signals")
     parser.add_argument("--save_fig", type=str, default=None,
                        help="""Save figure to file (e.g., image.png) Naming convention:
